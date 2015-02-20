@@ -5,57 +5,120 @@
     android:weightSum="1">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
         android:id="@+id/imageView"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:contentDescription=""
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentStart="false" />
+        android:layout_centerHorizontal="true" />
 
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView"
         android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:singleLine="false" />
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"></TableRow>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="HP"
+        android:id="@+id/Hp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp" />
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"></TableRow>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Attack"
+        android:id="@+id/Attack"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/Hp"
+        android:layout_alignLeft="@+id/Hp"
+        android:layout_alignStart="@+id/Hp" />
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"></TableRow>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Defense"
+        android:id="@+id/Defense"
+        android:layout_below="@+id/Attack"
+        android:layout_alignLeft="@+id/Attack"
+        android:layout_alignStart="@+id/Attack"
+        android:layout_marginTop="31dp" />
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"></TableRow>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Special Attack"
+        android:id="@+id/SpecialAttack"
+        android:layout_below="@+id/Defense"
+        android:layout_alignLeft="@+id/Defense"
+        android:layout_alignStart="@+id/Defense"
+        android:layout_marginTop="31dp" />
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"></TableRow>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Special Defense"
+        android:id="@+id/SpecialDefense"
+        android:layout_below="@+id/SpecialAttack"
+        android:layout_alignLeft="@+id/SpecialAttack"
+        android:layout_alignStart="@+id/SpecialAttack"
+        android:layout_marginTop="31dp" />
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"></TableRow>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/HpNumber"
+        android:layout_alignTop="@+id/Hp"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView" />
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"></TableRow>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/AttackNumber"
+        android:layout_alignTop="@+id/Attack"
+        android:layout_alignLeft="@+id/HpNumber"
+        android:layout_alignStart="@+id/HpNumber" />
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"></TableRow>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/DefenseNumber"
+        android:layout_alignTop="@+id/Defense"
+        android:layout_alignLeft="@+id/AttackNumber"
+        android:layout_alignStart="@+id/AttackNumber" />
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"></TableRow>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/SpecialAttackNumber"
+        android:layout_alignTop="@+id/SpecialAttack"
+        android:layout_alignLeft="@+id/DefenseNumber"
+        android:layout_alignStart="@+id/DefenseNumber" />
 
-    </TableLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/SpecialDefenseNumber"
+        android:layout_alignTop="@+id/SpecialDefense"
+        android:layout_alignLeft="@+id/SpecialAttackNumber"
+        android:layout_alignStart="@+id/SpecialAttackNumber" />
 
 </RelativeLayout>

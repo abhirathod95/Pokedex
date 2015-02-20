@@ -1,4 +1,5 @@
 package com.pokedex.falcon.pokedex;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -8,8 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.app.ListActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,6 +23,7 @@ import retrofit.client.Response;
 
 public class MainActivity extends ActionBarActivity {
 
+    private ProgressDialog pDialog;
     private ListView listView;
     private ArrayList<Pokemon> objects;
     private ArrayAdapter<Pokemon> adapter;
@@ -32,7 +33,11 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listView = (ListView) findViewById(R.id.listview);
+        pDialog = new ProgressDialog(MainActivity.this);
+        pDialog.setMessage("Loading Information ....");
+        pDialog.show();
+
+        listView = (ListView) findViewById(R.id.listView);
         objects = new ArrayList<Pokemon>();
         adapter = new ArrayAdapter<Pokemon>(this, R.layout.list_item, objects);
 
@@ -47,12 +52,14 @@ public class MainActivity extends ActionBarActivity {
         Callback<Pokedex> callback = new Callback<Pokedex>() {
             @Override
             public void success(Pokedex pokedex, Response response) {
+
                 List<Pokemon> pokemons = pokedex.getPokemon();
                 for (Pokemon pokemon: pokemons){
                     objects.add(pokemon);
                 }
                 Collections.sort(objects, Pokemon.PokeNatIdComparator);
                 adapter.notifyDataSetChanged();
+                pDialog.dismiss();
             }
 
             @Override
@@ -61,6 +68,7 @@ public class MainActivity extends ActionBarActivity {
             }
         };
         pokemonService.getPokedex(1,callback);
+
         listView.setTextFilterEnabled(true);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -71,9 +79,7 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

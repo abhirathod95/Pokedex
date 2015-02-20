@@ -11,10 +11,14 @@ import java.util.List;
  */
 public class Pokemon implements Parcelable{
 
-    private String attack;
-    private String resource_uri;
     private int nationalID;
+    private String resource_uri;
     private String name;
+    private String attack;
+    private String defense;
+    private String hp;
+    private String sp_atk;
+    private String sp_def;
     private String weight;
     private List<Type> types;
 
@@ -32,6 +36,22 @@ public class Pokemon implements Parcelable{
 
     public String getAttack () {
         return attack;
+    }
+
+    public String getDefense () {
+        return defense;
+    }
+
+    public String getHp() {
+        return hp;
+    }
+
+    public String getSp_atk() {
+        return sp_atk;
+    }
+
+    public String getSp_def() {
+        return sp_def;
     }
 
     public String getWeight() {
