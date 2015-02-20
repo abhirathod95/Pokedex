@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import retrofit.Callback;
@@ -23,8 +24,8 @@ import retrofit.client.Response;
 public class MainActivity extends ActionBarActivity {
 
     private ListView listView;
-    private ArrayList<String> objects;
-    private ArrayAdapter<String> adapter;
+    private ArrayList<Pokemon> objects;
+    private ArrayAdapter<Pokemon> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +33,8 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         listView = (ListView) findViewById(R.id.listview);
-        objects = new ArrayList<String>();
-        adapter = new ArrayAdapter<String>(this, R.layout.list_item, objects);
+        objects = new ArrayList<Pokemon>();
+        adapter = new ArrayAdapter<Pokemon>(this, R.layout.list_item, objects);
 
         listView.setAdapter(adapter);
 
@@ -48,8 +49,9 @@ public class MainActivity extends ActionBarActivity {
             public void success(Pokedex pokedex, Response response) {
                 List<Pokemon> pokemons = pokedex.getPokemon();
                 for (Pokemon pokemon: pokemons){
-                    objects.add(pokemon.getName());
+                    objects.add(pokemon);
                 }
+                Collections.sort(objects, Pokemon.PokeNatIdComparator);
                 adapter.notifyDataSetChanged();
             }
 
@@ -59,18 +61,17 @@ public class MainActivity extends ActionBarActivity {
             }
         };
         pokemonService.getPokedex(1,callback);
-
+        listView.setTextFilterEnabled(true);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    final int position, long id) {
-
-                String main = adapter.getItem(position).toString();
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                Pokemon pokemon = adapter.getItem(position);
                 Intent intent = new Intent(MainActivity.this, PokemonInfo.class);
-                intent.putExtra ("main", main);
+                intent.putExtra ("pokemon", pokemon);
                 startActivity(intent);
             }
         });
+
     }
 
 

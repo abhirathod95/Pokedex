@@ -6,7 +6,6 @@ import java.util.List;
  */
 public class Pokedex {
     private String name;
-    private String resource_uri;
     private List<Pokemon> pokemon;
 
     public String getName() {
@@ -19,10 +18,6 @@ public class Pokedex {
 
     public List<Pokemon> getPokemon() {
         return pokemon;
-    }
-
-    public void setPokemon(List<Pokemon> pokemon) {
-        this.pokemon = pokemon;
     }
 
 }
